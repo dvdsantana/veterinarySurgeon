@@ -10,8 +10,11 @@ namespace VeterinarySurgeon.Core.Entities
         public string Name { get; private set; }
 
         public int OwnerId { get; private set; } // Not required, but recommended.
+
         public Employee Owner { get; private set; }
+
         public int AnimalId { get; private set; } // Not required, but recommended.
+
         public Animal Animal { get; private set; }
 
         private Pet()

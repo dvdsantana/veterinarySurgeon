@@ -22,9 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Endpoints\Employee\" />
-    <Folder Include="Endpoints\Pet\" />
+    <None Update="veterinary.sqlite">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 
