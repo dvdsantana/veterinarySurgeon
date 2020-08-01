@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using VeterinarySurgeon.SharedKernel;
 
 namespace VeterinarySurgeon.Core.Entities
 {
@@ -17,6 +16,8 @@ namespace VeterinarySurgeon.Core.Entities
 
         public ICollection<Pet> Pets { get; set; }
 
+        // We need this constructor in the child class FamilyMember, 
+        // so it should be at least protected.
         protected Employee() { }
 
         public Employee(string name, string lastName, bool isEmployee = true): this()

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VeterinarySurgeon.SharedKernel\VeterinarySurgeon.SharedKernel.csproj" />
+    <PackageReference Include="Ardalis.Specification" Version="4.0.0" />
   </ItemGroup>
 
 </Project>

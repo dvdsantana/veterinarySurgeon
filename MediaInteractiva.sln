@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeterinarySurgeon.SharedKernel", "VeterinarySurgeon.SharedKernel\VeterinarySurgeon.SharedKernel.csproj", "{E6EC95F3-8F64-4ACC-AA23-49BC530834F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VeterinarySurgeon.Infrastructure", "VeterinarySurgeon.Infrastructure\VeterinarySurgeon.Infrastructure.csproj", "{3AEDF3AB-D070-43A6-A1C1-92C9A114D4BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeterinarySurgeon.Infrastructure", "VeterinarySurgeon.Infrastructure\VeterinarySurgeon.Infrastructure.csproj", "{3AEDF3AB-D070-43A6-A1C1-92C9A114D4BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VeterinarySurgeon.Core", "VeterinarySurgeon.Core\VeterinarySurgeon.Core.csproj", "{6DFF61B5-510E-4A72-BD5B-A6154868D249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeterinarySurgeon.Core", "VeterinarySurgeon.Core\VeterinarySurgeon.Core.csproj", "{6DFF61B5-510E-4A72-BD5B-A6154868D249}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VeterinarySurgeon.Web", "VeterinarySurgeon.Web\VeterinarySurgeon.Web.csproj", "{912EBD97-FFD2-4C04-9DB3-CF48B9F1ABC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeterinarySurgeon.Web", "VeterinarySurgeon.Web\VeterinarySurgeon.Web.csproj", "{912EBD97-FFD2-4C04-9DB3-CF48B9F1ABC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeterinarySurgeon.Application", "VeterinarySurgeon.Application\VeterinarySurgeon.Application.csproj", "{EFC657C7-EC65-4627-A451-9B384A19F361}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E6EC95F3-8F64-4ACC-AA23-49BC530834F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6EC95F3-8F64-4ACC-AA23-49BC530834F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6EC95F3-8F64-4ACC-AA23-49BC530834F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6EC95F3-8F64-4ACC-AA23-49BC530834F6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AEDF3AB-D070-43A6-A1C1-92C9A114D4BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AEDF3AB-D070-43A6-A1C1-92C9A114D4BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AEDF3AB-D070-43A6-A1C1-92C9A114D4BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{912EBD97-FFD2-4C04-9DB3-CF48B9F1ABC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{912EBD97-FFD2-4C04-9DB3-CF48B9F1ABC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{912EBD97-FFD2-4C04-9DB3-CF48B9F1ABC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFC657C7-EC65-4627-A451-9B384A19F361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFC657C7-EC65-4627-A451-9B384A19F361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFC657C7-EC65-4627-A451-9B384A19F361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFC657C7-EC65-4627-A451-9B384A19F361}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

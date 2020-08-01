@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VeterinarySurgeon.SharedKernel;
+﻿using System.Collections.Generic;
 
 namespace VeterinarySurgeon.Core.Entities
 {

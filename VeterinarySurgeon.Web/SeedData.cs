@@ -9,7 +9,6 @@ namespace VeterinarySurgeon.Web
 {
     public static class SeedData
     {
-
         public static readonly Animal animal1 = new Animal("Phoenix");
         public static readonly Animal animal2 = new Animal("Owl");
         public static readonly Animal animal3 = new Animal("Hippogriff");
@@ -53,32 +52,23 @@ namespace VeterinarySurgeon.Web
             // Look for any TODO items.
             if (dbContext.Pets.Any())
             {
-                return;   // DB has been seeded
+                //return;   // DB has been seeded
             }
 
             PopulateTestData(dbContext);
         }
 
-        public static void PopulateTestData(AppDbContext dbContext)
+        private static void PopulateTestData(AppDbContext dbContext)
         {
             // Clear previous data
-            foreach (var item in dbContext.Pets)
-            {
-                dbContext.Remove(item);
-            }
-            foreach (var item in dbContext.Employees)
-            {
-                dbContext.Remove(item);
-            }
-            foreach (var item in dbContext.FamilyMembers)
-            {
-                dbContext.Remove(item);
-            }
-            foreach (var item in dbContext.Animals)
-            {
-                dbContext.Remove(item);
-            }
+            dbContext.Pets.Select(x => dbContext.Remove(x));
 
+            dbContext.Employees.Select(x => dbContext.Remove(x));
+
+            dbContext.FamilyMembers.Select(x => dbContext.Remove(x));
+
+            dbContext.Animals.Select(x => dbContext.Remove(x));
+            
             dbContext.SaveChanges();
 
             // Insert data

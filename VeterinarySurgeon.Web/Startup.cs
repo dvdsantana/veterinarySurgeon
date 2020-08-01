@@ -1,21 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using VeterinarySurgeon.Infrastructure;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.OpenApi.Models;
-using VeterinarySurgeon.SharedKernel.Interfaces;
-using VeterinarySurgeon.Infrastructure.Data;
+using VeterinarySurgeon.Infrastructure;
+using VeterinarySurgeon.Application;
 
 namespace VeterinarySurgeon.Web
 {
@@ -40,8 +31,10 @@ namespace VeterinarySurgeon.Web
             string connectionString = Configuration.GetConnectionString("SqliteConnection");  //Configuration.GetConnectionString("DefaultConnection");
 
             // Extension methods from Infrastructure
-            services.AddDbContext(connectionString); 
+            services.AddDbContext(connectionString);
             services.AddEFRepository();
+            services.AddLogger();
+            services.AddEmployeeService();
 
             services.AddControllers();
 

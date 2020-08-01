@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using VeterinarySurgeon.Core.Interfaces;
 using VeterinarySurgeon.Infrastructure.Data;
-using VeterinarySurgeon.SharedKernel.Interfaces;
+using VeterinarySurgeon.Infrastructure.Logging;
 
 namespace VeterinarySurgeon.Infrastructure
 {
@@ -17,6 +15,9 @@ namespace VeterinarySurgeon.Infrastructure
                 options.UseSqlite(connectionString));
 
         public static void AddEFRepository(this IServiceCollection services) =>
-            services.AddScoped<IRepository, EfRepository>();
+            services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
+
+        public static void AddLogger(this IServiceCollection services) =>
+            services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
     }
 }

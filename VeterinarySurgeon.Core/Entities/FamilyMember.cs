@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VeterinarySurgeon.Core.Entities
+﻿namespace VeterinarySurgeon.Core.Entities
 {
     public class FamilyMember : Employee
     {

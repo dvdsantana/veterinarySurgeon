@@ -1,13 +1,15 @@
-﻿using VeterinarySurgeon.SharedKernel.Interfaces;
-using VeterinarySurgeon.SharedKernel;
+﻿using Ardalis.Specification;
+using Ardalis.Specification.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VeterinarySurgeon.Core.Entities;
+using VeterinarySurgeon.Core.Interfaces;
 
 namespace VeterinarySurgeon.Infrastructure.Data
 {
-    public class EfRepository : IRepository
+    public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
     {
         private readonly AppDbContext _dbContext;
 
@@ -16,22 +18,29 @@ namespace VeterinarySurgeon.Infrastructure.Data
             _dbContext = dbContext;
         }
 
-        public T GetById<T>(int id) where T : BaseEntity
+        public virtual async Task<T> GetByIdAsync(int id)
         {
-            return _dbContext.Set<T>().SingleOrDefault(e => e.Id == id);
+            return await _dbContext.Set<T>().FindAsync(id);
         }
 
-        public Task<T> GetByIdAsync<T>(int id) where T : BaseEntity
+        public async Task<IReadOnlyList<T>> ListAllAsync()
         {
-            return _dbContext.Set<T>().SingleOrDefaultAsync(e => e.Id == id);
+            return await _dbContext.Set<T>().ToListAsync();
         }
 
-        public Task<List<T>> ListAsync<T>() where T : BaseEntity
+        public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
         {
-            return _dbContext.Set<T>().ToListAsync();
+            var specificationResult = ApplySpecification(spec);
+            return await specificationResult.ToListAsync();
         }
 
-        public async Task<T> AddAsync<T>(T entity) where T : BaseEntity
+        public async Task<int> CountAsync(ISpecification<T> spec)
+        {
+            var specificationResult = ApplySpecification(spec);
+            return await specificationResult.CountAsync();
+        }
+
+        public async Task<T> AddAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();
@@ -39,16 +48,34 @@ namespace VeterinarySurgeon.Infrastructure.Data
             return entity;
         }
 
-        public async Task UpdateAsync<T>(T entity) where T : BaseEntity
+        public async Task UpdateAsync(T entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync<T>(T entity) where T : BaseEntity
+        public async Task DeleteAsync(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<T> FirstAsync(ISpecification<T> spec)
+        {
+            var specificationResult = ApplySpecification(spec);
+            return await specificationResult.FirstAsync();
+        }
+
+        public async Task<T> FirstOrDefaultAsync(ISpecification<T> spec)
+        {
+            var specificationResult = ApplySpecification(spec);
+            return await specificationResult.FirstOrDefaultAsync();
+        }
+
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            var evaluator = new SpecificationEvaluator<T>();
+            return evaluator.GetQuery(_dbContext.Set<T>().AsQueryable(), spec);
         }
     }
 }

@@ -5,18 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VeterinarySurgeon.SharedKernel.Interfaces;
+using VeterinarySurgeon.Application.Services;
+using VeterinarySurgeon.Application.Specifications;
 using VeterinarySurgeon.Web.Endpoints.Pet;
 
 namespace VeterinarySurgeon.Web.Endpoints.Employee
 {
-    public class List : BaseAsyncEndpoint<List<EmployeeResponse>>
+    public class List : BaseAsyncEndpoint<List<EmployeeDTO>>
     {
-        private readonly IRepository _repository;
+        private readonly IEmployeeService _employeeService;
 
-        public List(IRepository repository)
+        public List(IEmployeeService employeeService)
         {
-            _repository = repository;
+            _employeeService = employeeService;
         }
 
         [HttpGet("/employees")]
@@ -26,18 +27,10 @@ namespace VeterinarySurgeon.Web.Endpoints.Employee
             OperationId = "Employee.List",
             Tags = new[] { "EmployeeEndpoints" })
         ]
-        public override async Task<ActionResult<List<EmployeeResponse>>> HandleAsync()
+        public override async Task<ActionResult<List<EmployeeDTO>>> HandleAsync()
         {
-            var items = (await _repository.ListAsync<Core.Entities.Employee>())
-                .Select(item => new EmployeeResponse
-                {
-                    FamilyMembers = FamilyMemberResponse.FromFamilyMember(item.FamilyMembers),
-                    Id = item.Id,
-                    IsEmployee = item.IsEmployee,
-                    LastName = item.LastName,
-                    Name = item.Name,
-                    Pets = PetResponse.FromPet(item.Pets)
-                });
+            var pagedSpecification = new EmployeesPaginatedWithPetsSpecification(skip:0, take:10);
+            var items = await _employeeService.ListAsyncPaged(pagedSpecification);
 
             return Ok(items);
         }

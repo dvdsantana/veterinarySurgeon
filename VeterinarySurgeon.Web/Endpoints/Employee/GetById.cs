@@ -1,22 +1,21 @@
 ﻿using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using VeterinarySurgeon.SharedKernel.Interfaces;
+using VeterinarySurgeon.Application.Services;
+using VeterinarySurgeon.Application.Specifications;
 using VeterinarySurgeon.Web.Endpoints.Pet;
 
 namespace VeterinarySurgeon.Web.Endpoints.Employee
 {
-    public class GetById : BaseAsyncEndpoint<int, EmployeeResponse>
+    public class GetById : BaseAsyncEndpoint<int, EmployeeDTO>
     {
-        private readonly IRepository _repository;
+        private readonly IEmployeeService _employeeService;
 
-        public GetById(IRepository repository)
+        public GetById(IEmployeeService employeeService)
         {
-            _repository = repository;
+            _employeeService = employeeService;
         }
 
         [HttpGet("/employees/{id:int}")]
@@ -26,20 +25,11 @@ namespace VeterinarySurgeon.Web.Endpoints.Employee
             OperationId = "Employee.GetById",
             Tags = new[] { "EmployeeEndpoints" })
         ]
-        public override async Task<ActionResult<EmployeeResponse>> HandleAsync(int id)
+        public override async Task<ActionResult<EmployeeDTO>> HandleAsync(int id)
         {
-            var item = await _repository.GetByIdAsync<Core.Entities.Employee>(id);
-
-            var response = new EmployeeResponse
-            {
-                FamilyMembers = FamilyMemberResponse.FromFamilyMember(item.FamilyMembers),
-                Id = item.Id,
-                IsEmployee = item.IsEmployee,
-                LastName = item.LastName,
-                Name = item.Name,
-                Pets = PetResponse.FromPet(item.Pets)
-            };
-            return Ok(response);
+            
+            var item = await _employeeService.GetById(id);
+            return Ok(item);
         }
     }
 }

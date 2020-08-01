@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VeterinarySurgeon.SharedKernel;
-
-namespace VeterinarySurgeon.Core.Entities
+﻿namespace VeterinarySurgeon.Core.Entities
 {
     public class Pet: BaseEntity
     {
