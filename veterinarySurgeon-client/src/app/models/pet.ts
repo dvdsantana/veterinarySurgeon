@@ -7,3 +7,10 @@ export class Pet {
     animal: Animal;
     owner: Employee
 }
+
+export class PetCommand
+{
+    name: string;
+    animalId: number;
+    ownerId: number;
+}

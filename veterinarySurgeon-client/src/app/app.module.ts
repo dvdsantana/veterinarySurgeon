@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,7 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { PetListComponent } from './pet-list/pet-list.component';
 import { YesNoPipe } from './yes-no.pipe';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
+import { PetCreateComponent } from './pet-create/pet-create.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { EmployeeCreateComponent } from './employee-create/employee-create.compo
     PetListComponent,
     YesNoPipe,
     EmployeeCreateComponent,
+    PetCreateComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

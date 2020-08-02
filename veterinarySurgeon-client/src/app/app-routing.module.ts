@@ -7,6 +7,7 @@ import { EmployeeCreateComponent } from './employee-create/employee-create.compo
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 import { PetListComponent } from './pet-list/pet-list.component';
+import { PetCreateComponent} from './pet-create/pet-create.component';
 
 const routes: Routes = [
   { path: 'employees', component: EmployeeListComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'update/:id', component: UpdateEmployeeComponent },
   { path: 'details/:id', component: EmployeeDetailsComponent },
   { path: 'pets', component: PetListComponent },
+  { path: 'pets/add', component: PetCreateComponent },
 ];
 
 @NgModule({
