@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using VeterinarySurgeon.Application.Services;
 using VeterinarySurgeon.Web.Endpoints.Animal;
+using VeterinarySurgeon.Web.Endpoints.Employee;
 
 namespace VeterinarySurgeon.Web.Endpoints.Pet
 {
@@ -16,6 +17,9 @@ namespace VeterinarySurgeon.Web.Endpoints.Pet
         [Required]
         public AnimalResponse Animal { get; set; }
 
+        [Required]
+        public EmployeeResponse Owner { get; set; }
+
         // Mappers
         // Note: doesn't expose behavior
         public static PetResponse FromPetDTO(PetDTO item) =>
@@ -23,10 +27,11 @@ namespace VeterinarySurgeon.Web.Endpoints.Pet
             {
                 Id = item.Id,
                 Animal = AnimalResponse.FromAnimal(item.Animal),
-                Name = item.Name
+                Name = item.Name,
+                Owner = EmployeeResponse.FromEmployeeDTO(item.Employee)
             };
 
-        public static ICollection<PetResponse> FromPet(ICollection<PetDTO> items) =>
+        public static ICollection<PetResponse> FromPetDTO(ICollection<PetDTO> items) =>
             items.Select(x => FromPetDTO(x)).ToList();
 
         //public static PetDTO FromPetResponse(PetResponse item) =>

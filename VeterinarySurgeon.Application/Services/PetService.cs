@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using VeterinarySurgeon.Application.Specifications;
 using VeterinarySurgeon.Core.Entities;
 using VeterinarySurgeon.Core.Interfaces;
 
@@ -38,6 +41,13 @@ namespace VeterinarySurgeon.Application.Services
             var result = PetDTO.FromPet(petCreated);
 
             return result;
+        }
+
+        public async Task<ICollection<PetDTO>> ListAsyncPaged(PetsPaginatedWithOwnerSpecification spec)
+        {
+            var items = await _petRepository.ListAsync(spec);
+
+            return items.Select(x => PetDTO.FromPet(x)).ToList();
         }
     }
 }

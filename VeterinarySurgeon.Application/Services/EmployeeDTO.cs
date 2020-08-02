@@ -27,16 +27,23 @@ namespace VeterinarySurgeon.Application.Services
 
         // Mappers
         // Note: doesn't expose behavior
-        public static EmployeeDTO FromEmployee(Employee item) =>
-            new EmployeeDTO()
+        public static EmployeeDTO FromEmployee(Employee item, bool includePets = true)
+        {
+            var result = new EmployeeDTO()
             {
                 Id = item.Id,
                 FamilyMembers = item.FamilyMembers == null ? new List<FamilyMemberDTO>() : FamilyMemberDTO.FromFamilyMember(item.FamilyMembers),
                 IsEmployee = item.IsEmployee,
                 LastName = item.LastName,
                 Name = item.Name,
-                Pets = item.Pets == null ? new List<PetDTO>() : PetDTO.FromPet(item.Pets),
                 PetsCount = item.PetsCount
             };
+
+            if (includePets)
+                result.Pets = item.Pets == null ? new List<PetDTO>() : PetDTO.FromPet(item.Pets);
+
+            return result;
+        }
+            
     }
 }

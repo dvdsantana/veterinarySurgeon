@@ -11,7 +11,8 @@ namespace VeterinarySurgeon.Application.Services
 
         public int EmployeeId { get; set; }
 
-        public Employee Employee { get; set; }
+        [Required]
+        public EmployeeDTO Employee { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -29,7 +30,8 @@ namespace VeterinarySurgeon.Application.Services
                 Id = item.Id,
                 AnimalId = item.AnimalId,
                 Animal = AnimalDTO.FromAnimal(item.Animal),
-                Name = item.Name
+                Name = item.Name,
+                Employee = EmployeeDTO.FromEmployee(item.Owner, false)
             };
 
         public static Pet FromPetDTO(PetDTO item) =>

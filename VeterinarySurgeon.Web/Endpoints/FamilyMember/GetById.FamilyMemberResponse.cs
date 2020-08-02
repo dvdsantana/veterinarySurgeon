@@ -29,7 +29,7 @@ namespace VeterinarySurgeon.Web.Endpoints.FamilyMember
                 Id = item.Id,
                 LastName = item.LastName,
                 Name = item.Name,
-                Pets = item.Pets == null ? new List<PetResponse>() : PetResponse.FromPet(item.Pets)
+                Pets = item.Pets == null ? new List<PetResponse>() : PetResponse.FromPetDTO(item.Pets)
             };
 
         public static ICollection<FamilyMemberResponse> FromFamilyMember(ICollection<FamilyMemberDTO> items) =>
