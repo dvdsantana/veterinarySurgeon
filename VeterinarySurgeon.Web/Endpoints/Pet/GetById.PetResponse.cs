@@ -26,24 +26,12 @@ namespace VeterinarySurgeon.Web.Endpoints.Pet
             new PetResponse()
             {
                 Id = item.Id,
-                Animal = AnimalResponse.FromAnimal(item.Animal),
+                Animal = AnimalResponse.FromAnimalDTO(item.Animal),
                 Name = item.Name,
                 Owner = EmployeeResponse.FromEmployeeDTO(item.Employee)
             };
 
         public static ICollection<PetResponse> FromPetDTO(ICollection<PetDTO> items) =>
             items.Select(x => FromPetDTO(x)).ToList();
-
-        //public static PetDTO FromPetResponse(PetResponse item) =>
-        //    new PetDTO()
-        //    {
-        //        Animal = AnimalResponse.FromAnimalDTO(item.Animal),
-        //        Employee = EmployeeResponse.FromEmployeeDTO(item.Employee),
-        //        Id = item.Id,
-        //        Name = item.Name
-        //    };
-
-        //public static ICollection<PetDTO> FromPetResponse(ICollection<PetResponse> items) =>
-        //    items.Select(x => FromPetResponse(x)).ToList();
     }
 }

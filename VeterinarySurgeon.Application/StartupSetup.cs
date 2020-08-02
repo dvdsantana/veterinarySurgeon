@@ -10,5 +10,8 @@ namespace VeterinarySurgeon.Application
 
         public static void AddPetService(this IServiceCollection services) =>
             services.AddScoped<IPetService, PetService>();
+
+        public static void AddAnimalService(this IServiceCollection services) =>
+            services.AddScoped<IAnimalService, AnimalService>();
     }
 }

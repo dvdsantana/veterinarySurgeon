@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using VeterinarySurgeon.Application.Services;
 
 namespace VeterinarySurgeon.Web.Endpoints.Animal
@@ -13,17 +16,21 @@ namespace VeterinarySurgeon.Web.Endpoints.Animal
 
         // Mappers
         // Note: doesn't expose behavior
-        public static AnimalResponse FromAnimal(AnimalDTO item) =>
+        public static AnimalResponse FromAnimalDTO(AnimalDTO item) =>
             new AnimalResponse()
             {
                 Id = item.Id,
                 Name = item.Name
             };
 
-        public static AnimalDTO FromAnimalDTO(AnimalResponse item) => new AnimalDTO()
-        {
-            Id = item.Id,
-            Name = item.Name
-        };
+        public static ICollection<AnimalResponse> FromAnimalDTO(ICollection<AnimalDTO> items) =>
+            items.Select(x => FromAnimalDTO(x)).ToList();
+
+        public static AnimalDTO FromAnimalDTO(AnimalResponse item) => 
+            new AnimalDTO()
+            {
+                Id = item.Id,
+                Name = item.Name
+            };
     }
 }

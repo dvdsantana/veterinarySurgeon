@@ -38,6 +38,7 @@ namespace VeterinarySurgeon.Web
             services.AddLogger();
             services.AddEmployeeService();
             services.AddPetService();
+            services.AddAnimalService();
 
             services.AddControllers();
 
