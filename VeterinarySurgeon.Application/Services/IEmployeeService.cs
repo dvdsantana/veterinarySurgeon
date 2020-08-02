@@ -15,5 +15,7 @@ namespace VeterinarySurgeon.Application.Services
         Task<EmployeeDTO> AddPetAsync(ICollection<PetDTO> pets);
 
         Task<bool> Delete(int employeeId);
+
+        Task<EmployeeDTO> Create(string name, string lastName);
     }
 }

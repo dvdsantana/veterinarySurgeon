@@ -11,6 +11,7 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { PetListComponent } from './pet-list/pet-list.component';
 import { YesNoPipe } from './yes-no.pipe';
+import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { YesNoPipe } from './yes-no.pipe';
     EmployeeDetailsComponent,
     UpdateEmployeeComponent,
     PetListComponent,
-    YesNoPipe
+    YesNoPipe,
+    EmployeeCreateComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace VeterinarySurgeon.Core.Entities
 {
@@ -19,7 +18,10 @@ namespace VeterinarySurgeon.Core.Entities
 
         public int PetsCount { 
             get {
-                int petsCount = Pets.Count;
+                int petsCount = 0;
+
+                if (Pets != null)
+                    petsCount = Pets.Count;
 
                 if (FamilyMembers == null)
                     return petsCount;

@@ -10,3 +10,8 @@ export class Employee {
     pets: Pet[];
     familyMembers: Employee[];
 }
+
+export class EmployeeCommand {
+    name: string;
+    lastName: string;
+}

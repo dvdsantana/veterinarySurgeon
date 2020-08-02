@@ -85,5 +85,14 @@ namespace VeterinarySurgeon.Application.Services
 
             return true;
         }
+
+        public async Task<EmployeeDTO> Create(string name, string lastName)
+        {
+            var employeeCreated = await _employeeRepository.AddAsync(new Employee(name, lastName));
+
+            var result = EmployeeDTO.FromEmployee(employeeCreated);
+
+            return result;
+        }
     }
 }
