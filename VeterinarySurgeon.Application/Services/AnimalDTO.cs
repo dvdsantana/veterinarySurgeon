@@ -11,7 +11,7 @@ namespace VeterinarySurgeon.Application.Services
         [Required]
         public string Name { get; set; }
 
-        // Mappers from entity to DTOs
+        // Mappers
         // Note: doesn't expose behavior
         public static AnimalDTO FromAnimal(Animal item) =>
             new AnimalDTO()
@@ -19,5 +19,7 @@ namespace VeterinarySurgeon.Application.Services
                 Id = item.Id,
                 Name = item.Name
             };
+
+        public static Animal FromAnimalDTO(AnimalDTO item) => new Animal(item.Name);
     }
 }

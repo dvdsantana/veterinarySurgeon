@@ -12,7 +12,9 @@ namespace VeterinarySurgeon.Application.Specifications
                 .Include(e => e.Pets)
                     .ThenInclude(p => p.Animal);
             
-            Query.Include(e => e.FamilyMembers);
+            Query.Include(e => e.FamilyMembers)
+                .ThenInclude(f => f.Pets)
+                    .ThenInclude(p => p.Animal);
         } 
     }
 }

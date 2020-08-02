@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using VeterinarySurgeon.Core.Entities;
 
 namespace VeterinarySurgeon.Application.Services
 {
@@ -22,9 +23,9 @@ namespace VeterinarySurgeon.Application.Services
 
         public ICollection<PetDTO> Pets { get; set; }
 
-        // Mappers from entity to DTOs
+        // Mappers
         // Note: doesn't expose behavior
-        public static EmployeeDTO FromEmployee(Core.Entities.Employee item) =>
+        public static EmployeeDTO FromEmployee(Employee item) =>
             new EmployeeDTO()
             {
                 Id = item.Id,

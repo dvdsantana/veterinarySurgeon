@@ -6,7 +6,14 @@ namespace VeterinarySurgeon.Application.Services
 {
     public interface IEmployeeService
     {
-        Task<EmployeeDTO> GetById(int employeeId);
+        Task<bool> Exists(int employeeId);
+
+        Task<EmployeeDTO> GetByIdAsync(int employeeId);
+
         Task<ICollection<EmployeeDTO>> ListAsyncPaged(EmployeesPaginatedWithPetsSpecification spec);
+
+        Task<EmployeeDTO> AddPetAsync(ICollection<PetDTO> pets);
+
+        Task<bool> Delete(int employeeId);
     }
 }

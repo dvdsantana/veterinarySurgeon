@@ -7,8 +7,11 @@ namespace VeterinarySurgeon.Application.Services
 {
     public class PetDTO
     {
-        [Required]
         public int Id { get; set; }
+
+        public int EmployeeId { get; set; }
+
+        public Employee Employee { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -16,17 +19,26 @@ namespace VeterinarySurgeon.Application.Services
         [Required]
         public AnimalDTO Animal { get; set; }
 
-        // Mappers from entity to Responses
+        public int AnimalId { get; set; }
+
+        // Mappers
         // Note: doesn't expose behavior
         public static PetDTO FromPet(Pet item) =>
             new PetDTO()
             {
                 Id = item.Id,
+                AnimalId = item.AnimalId,
                 Animal = AnimalDTO.FromAnimal(item.Animal),
                 Name = item.Name
             };
 
+        public static Pet FromPetDTO(PetDTO item) =>
+            new Pet(item.Name, item.AnimalId, item.EmployeeId);
+
         public static ICollection<PetDTO> FromPet(ICollection<Pet> items) =>
             items.Select(x => FromPet(x)).ToList();
+
+        public static ICollection<Pet> FromPetDTO(ICollection<PetDTO> items) =>
+            items.Select(x => FromPetDTO(x)).ToList();
     }
 }

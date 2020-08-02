@@ -24,6 +24,13 @@
             Owner = owner;
         }
 
+        public Pet(string name, int animalId, int ownerId): this()
+        {
+            Name = name;
+            AnimalId = animalId;
+            OwnerId = ownerId;
+        }
+
         public override string ToString() => $"The {Animal.Name} {Name} belongs to {Owner.FullName}.";
     }
 }
