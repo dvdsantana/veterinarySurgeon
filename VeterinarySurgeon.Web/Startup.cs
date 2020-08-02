@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using VeterinarySurgeon.Infrastructure;
 using VeterinarySurgeon.Application;
+using VeterinarySurgeon.Infrastructure;
 
 namespace VeterinarySurgeon.Web
 {
@@ -35,6 +35,7 @@ namespace VeterinarySurgeon.Web
             services.AddEFRepository();
             services.AddLogger();
             services.AddEmployeeService();
+            services.AddPetService();
 
             services.AddControllers();
 
