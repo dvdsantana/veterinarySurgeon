@@ -26,6 +26,8 @@ namespace VeterinarySurgeon.Web.Endpoints.Employee
 
         public ICollection<PetResponse> Pets { get; set; }
 
+        public int PetsCount { get; set; }
+
         // Mappers
         // Note: doesn't expose behavior
         public static EmployeeResponse FromEmployeeDTO(EmployeeDTO item) =>
@@ -36,7 +38,8 @@ namespace VeterinarySurgeon.Web.Endpoints.Employee
                 IsEmployee = item.IsEmployee,
                 LastName = item.LastName,
                 Name = item.Name,
-                Pets = item.Pets == null ? new List<PetResponse>() : PetResponse.FromPet(item.Pets)
+                Pets = item.Pets == null ? new List<PetResponse>() : PetResponse.FromPet(item.Pets),
+                PetsCount = item.PetsCount
             };
 
         public static ICollection<EmployeeResponse> FromEmployeeDTO(ICollection<EmployeeDTO> items) =>

@@ -23,6 +23,8 @@ namespace VeterinarySurgeon.Application.Services
 
         public ICollection<PetDTO> Pets { get; set; }
 
+        public int PetsCount { get; set; }
+
         // Mappers
         // Note: doesn't expose behavior
         public static EmployeeDTO FromEmployee(Employee item) =>
@@ -33,7 +35,8 @@ namespace VeterinarySurgeon.Application.Services
                 IsEmployee = item.IsEmployee,
                 LastName = item.LastName,
                 Name = item.Name,
-                Pets = item.Pets == null ? new List<PetDTO>() : PetDTO.FromPet(item.Pets)
+                Pets = item.Pets == null ? new List<PetDTO>() : PetDTO.FromPet(item.Pets),
+                PetsCount = item.PetsCount
             };
     }
 }

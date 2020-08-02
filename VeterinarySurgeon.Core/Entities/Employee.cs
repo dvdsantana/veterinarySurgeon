@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace VeterinarySurgeon.Core.Entities
 {
@@ -15,6 +16,22 @@ namespace VeterinarySurgeon.Core.Entities
         public ICollection<FamilyMember> FamilyMembers { get; set; }
 
         public ICollection<Pet> Pets { get; set; }
+
+        public int PetsCount { 
+            get {
+                int petsCount = Pets.Count;
+
+                if (FamilyMembers == null)
+                    return petsCount;
+ 
+                foreach (var member in FamilyMembers)
+                {
+                    petsCount += member.PetsCount;
+                }
+                
+                return petsCount;
+            }
+        }
 
         // We need this constructor in the child class FamilyMember,
         // so it should be at least protected.
