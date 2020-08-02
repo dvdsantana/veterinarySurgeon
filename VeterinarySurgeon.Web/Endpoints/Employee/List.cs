@@ -1,17 +1,14 @@
 ﻿using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using VeterinarySurgeon.Application.Services;
 using VeterinarySurgeon.Application.Specifications;
-using VeterinarySurgeon.Web.Endpoints.Pet;
 
 namespace VeterinarySurgeon.Web.Endpoints.Employee
 {
-    public class List : BaseAsyncEndpoint<List<EmployeeDTO>>
+    public class List : BaseAsyncEndpoint<List<EmployeeResponse>>
     {
         private readonly IEmployeeService _employeeService;
 
@@ -27,12 +24,14 @@ namespace VeterinarySurgeon.Web.Endpoints.Employee
             OperationId = "Employee.List",
             Tags = new[] { "EmployeeEndpoints" })
         ]
-        public override async Task<ActionResult<List<EmployeeDTO>>> HandleAsync()
+        public override async Task<ActionResult<List<EmployeeResponse>>> HandleAsync()
         {
             var pagedSpecification = new EmployeesPaginatedWithPetsSpecification(skip:0, take:10);
             var items = await _employeeService.ListAsyncPaged(pagedSpecification);
 
-            return Ok(items);
+            var response = EmployeeResponse.FromEmployeeDTO(items);
+
+            return Ok(response);
         }
     }
 }

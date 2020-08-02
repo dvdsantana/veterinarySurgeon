@@ -6,30 +6,30 @@ using VeterinarySurgeon.Application.Services;
 
 namespace VeterinarySurgeon.Web.Endpoints.Employee
 {
-    public class GetById : BaseAsyncEndpoint<int, EmployeeResponse>
+    public class Delete : BaseAsyncEndpoint<int, EmployeeResponse>
     {
         private readonly IEmployeeService _employeeService;
 
-        public GetById(IEmployeeService employeeService)
+        public Delete(IEmployeeService employeeService)
         {
             _employeeService = employeeService;
         }
 
-        [HttpGet("/employees/{id:int}")]
+        [HttpDelete("/employees/{id:int}")]
         [SwaggerOperation(
-            Summary = "Gets a single Employee",
-            Description = "Gets a single Employee by Id",
-            OperationId = "Employee.GetById",
+            Summary = "Deletes a Employee",
+            Description = "Deletes a Employee",
+            OperationId = "Employee.Delete",
             Tags = new[] { "EmployeeEndpoints" })
         ]
         public override async Task<ActionResult<EmployeeResponse>> HandleAsync(int id)
         {
-            var item = await _employeeService.GetByIdAsync(id);
+            var isDeleted = await _employeeService.Delete(id);
 
-            if (item is null)
+            if (!isDeleted)
                 return NotFound();
 
-            return Ok(item);
+            return NoContent();
         }
     }
 }
