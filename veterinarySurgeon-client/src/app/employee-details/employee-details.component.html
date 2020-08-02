@@ -9,8 +9,31 @@
     <label><b>Last Name: </b></label> {{employee.lastName}}
   </div>
   <div>
-    <label><b>Is Employee: </b></label> {{employee.isEmployee}}
-  </div>  
+    <label><b>Is Employee? </b></label> {{employee.isEmployee | yesNo }}
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>{{employee.fullName}}'s Pet List</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Animal</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pet of employee.pets ">
+            <td>{{pet.name}}</td>
+            <td>{{pet.animal.name}}</td>
+            <td><button (click)="deletePet(pet.id)" class="btn btn-danger">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <br>

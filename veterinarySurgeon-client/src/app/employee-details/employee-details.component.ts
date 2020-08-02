@@ -1,8 +1,8 @@
 import { Employee } from '../models/employee';
 import { Component, OnInit, Input } from '@angular/core';
 import { EmployeeService } from '../employee.service';
-import { EmployeeListComponent } from '../employee-list/employee-list.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PetService } from '../pet.service';
 
 @Component({
   selector: 'app-employee-details',
@@ -14,19 +14,36 @@ export class EmployeeDetailsComponent implements OnInit {
   id: number;
   employee: Employee;
 
-  constructor(private route: ActivatedRoute,private router: Router,
-    private employeeService: EmployeeService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private employeeService: EmployeeService,
+    private petService: PetService) { }
 
   ngOnInit() {
     this.employee = new Employee();
 
     this.id = this.route.snapshot.params['id'];
     
+    this.reloadData();
+  }
+
+  reloadData() {
     this.employeeService.getEmployee(this.id)
       .subscribe(data => {
         console.log(data)
         this.employee = data;
       }, error => console.log(error));
+  }
+
+  deletePet(id: number) {
+    this.petService.deletePet(id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
   }
 
   list(){

@@ -1,3 +1,5 @@
+import { Pet } from './pet';
+
 export class Employee {
     id: number;
     name: string;
@@ -5,4 +7,5 @@ export class Employee {
     fullname: string;
     petsCount: number;
     isEmployee:boolean;
+    pets: Pet[];
 }
