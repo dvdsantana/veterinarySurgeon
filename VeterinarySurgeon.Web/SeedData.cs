@@ -52,7 +52,7 @@ namespace VeterinarySurgeon.Web
             // Look for any TODO items.
             if (dbContext.Pets.Any())
             {
-                //return;   // DB has been seeded
+                return;   // DB has been seeded
             }
 
             PopulateTestData(dbContext);
@@ -61,13 +61,14 @@ namespace VeterinarySurgeon.Web
         private static void PopulateTestData(AppDbContext dbContext)
         {
             // Clear previous data
-            dbContext.Pets.Select(x => dbContext.Remove(x));
 
-            dbContext.Employees.Select(x => dbContext.Remove(x));
+            foreach (var item in dbContext.Pets) dbContext.Remove(item);
 
-            dbContext.FamilyMembers.Select(x => dbContext.Remove(x));
+            foreach (var item in dbContext.Employees) dbContext.Remove(item);
 
-            dbContext.Animals.Select(x => dbContext.Remove(x));
+            foreach (var item in dbContext.FamilyMembers) dbContext.Remove(item);
+
+            foreach (var item in dbContext.Animals) dbContext.Remove(item);
             
             dbContext.SaveChanges();
 
