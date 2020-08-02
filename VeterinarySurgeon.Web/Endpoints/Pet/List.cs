@@ -1,13 +1,4 @@
-﻿using Ardalis.ApiEndpoints;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using VeterinarySurgeon.Web.Endpoints.Animal;
-using VeterinarySurgeon.Web.Endpoints.Employee;
-
-namespace VeterinarySurgeon.Web.Endpoints.Pet
+﻿namespace VeterinarySurgeon.Web.Endpoints.Pet
 {
     //public class List : BaseAsyncEndpoint<List<PetResponse>>
     //{
