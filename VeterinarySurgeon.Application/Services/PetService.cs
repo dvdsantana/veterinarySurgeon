@@ -43,6 +43,17 @@ namespace VeterinarySurgeon.Application.Services
             return result;
         }
 
+        public async Task<bool> Delete(int petId)
+        {
+            var itemToDelete = await _petRepository.GetByIdAsync(petId);
+
+            if (itemToDelete is null) return false;
+
+            await _petRepository.DeleteAsync(itemToDelete);
+
+            return true;
+        }
+
         public async Task<ICollection<PetDTO>> ListAsyncPaged(PetsPaginatedWithOwnerSpecification spec)
         {
             var items = await _petRepository.ListAsync(spec);

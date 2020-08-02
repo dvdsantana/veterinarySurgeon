@@ -23,7 +23,7 @@ export class PetListComponent implements OnInit {
     this.pets = this.petService.getPetsList();
   }
 
-  deleteEmployee(id: number) {
+  deletePet(id: number) {
     this.petService.deletePet(id)
       .subscribe(
         data => {

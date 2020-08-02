@@ -9,5 +9,7 @@ namespace VeterinarySurgeon.Application.Services
         Task<PetDTO> Create(string name, int animalId, int employeeId);
 
         Task<ICollection<PetDTO>> ListAsyncPaged(PetsPaginatedWithOwnerSpecification spec);
+
+        Task<bool> Delete(int petId);
     }
 }
