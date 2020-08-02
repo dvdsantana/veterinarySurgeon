@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Pets List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Animal</th>
+            <th>Owner</th>
+            <th>Employee</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pet of pets | async">
+            <td>{{pet.name}}</td>
+            <td>{{pet.animal.name}}</td>
+            <td>{{pet.owner.fullName}}</td>
+            <td>{{pet.owner.isEmployee}}</td>
+            <td><button (click)="deletePet(pet.id)" class="btn btn-danger">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
