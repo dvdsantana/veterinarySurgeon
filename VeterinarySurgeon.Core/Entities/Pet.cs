@@ -1,6 +1,6 @@
 ﻿namespace VeterinarySurgeon.Core.Entities
 {
-    public class Pet: BaseEntity
+    public class Pet : BaseEntity
     {
         public string Name { get; private set; }
 
@@ -14,17 +14,16 @@
 
         private Pet()
         {
-
         }
 
-        public Pet(string name, Animal animal, Employee owner): this()
+        public Pet(string name, Animal animal, Employee owner) : this()
         {
             Name = name;
             Animal = animal;
             Owner = owner;
         }
 
-        public Pet(string name, int animalId, int ownerId): this()
+        public Pet(string name, int animalId, int ownerId) : this()
         {
             Name = name;
             AnimalId = animalId;

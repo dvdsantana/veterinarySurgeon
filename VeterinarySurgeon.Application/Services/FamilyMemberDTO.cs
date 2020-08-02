@@ -20,7 +20,6 @@ namespace VeterinarySurgeon.Application.Services
 
         public ICollection<PetDTO> Pets { get; set; }
 
-
         // Mappers
         // Note: doesn't expose behavior
         public static FamilyMemberDTO FromFamilyMember(FamilyMember item) =>

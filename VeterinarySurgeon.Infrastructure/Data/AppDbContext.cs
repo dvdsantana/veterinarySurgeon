@@ -12,9 +12,9 @@ namespace VeterinarySurgeon.Infrastructure.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
-        
+
         public DbSet<Animal> Animals { get; set; }
-        
+
         public DbSet<Pet> Pets { get; set; }
 
         public DbSet<FamilyMember> FamilyMembers { get; set; }
@@ -44,7 +44,7 @@ namespace VeterinarySurgeon.Infrastructure.Data
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken()) =>
             await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-        public override int SaveChanges() => 
+        public override int SaveChanges() =>
             SaveChangesAsync().GetAwaiter().GetResult();
     }
 }

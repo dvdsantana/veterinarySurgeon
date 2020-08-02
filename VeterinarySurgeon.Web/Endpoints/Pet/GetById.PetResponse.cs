@@ -25,6 +25,7 @@ namespace VeterinarySurgeon.Web.Endpoints.Pet
                 Animal = AnimalResponse.FromAnimal(item.Animal),
                 Name = item.Name
             };
+
         public static ICollection<PetResponse> FromPet(ICollection<PetDTO> items) =>
             items.Select(x => FromPetDTO(x)).ToList();
 
@@ -36,8 +37,6 @@ namespace VeterinarySurgeon.Web.Endpoints.Pet
         //        Id = item.Id,
         //        Name = item.Name
         //    };
-
-
 
         //public static ICollection<PetDTO> FromPetResponse(ICollection<PetResponse> items) =>
         //    items.Select(x => FromPetResponse(x)).ToList();

@@ -20,7 +20,6 @@
     //    //{
     //    //    var items = (await _repository.ListAsync<Core.Entities.Pet>());
 
-
     //    //        items.Select(item => new PetResponse
     //    //        {
     //    //            Animal = AnimalResponse.FromAnimal(item.Animal),

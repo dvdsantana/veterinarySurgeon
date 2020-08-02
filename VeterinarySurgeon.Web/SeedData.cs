@@ -23,7 +23,7 @@ namespace VeterinarySurgeon.Web
         public static Employee employee3 = new Employee("Rubeus", "Hagrid", true);
         public static Employee employee4 = new Employee("Ron", "Weasley", true);
 
-        public static readonly Employee[] employees = new Employee[] { employee1, employee2, employee3, employee4};
+        public static readonly Employee[] employees = new Employee[] { employee1, employee2, employee3, employee4 };
 
         public static readonly FamilyMember family1 = new FamilyMember("Ginny", "Weasley", employee4);
         public static readonly FamilyMember family2 = new FamilyMember("Percy", "Weasley", employee4);
@@ -48,7 +48,7 @@ namespace VeterinarySurgeon.Web
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using var dbContext = new AppDbContext(serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>());
-            
+
             // Look for any TODO items.
             if (dbContext.Pets.Any())
             {
@@ -69,7 +69,7 @@ namespace VeterinarySurgeon.Web
             foreach (var item in dbContext.FamilyMembers) dbContext.Remove(item);
 
             foreach (var item in dbContext.Animals) dbContext.Remove(item);
-            
+
             dbContext.SaveChanges();
 
             // Insert data

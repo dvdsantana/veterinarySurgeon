@@ -48,7 +48,7 @@ namespace VeterinarySurgeon.Web
                     Contact = new OpenApiContact { Name = "David Santana", Email = "dvdsantana@gmail.com" }
                 });
                 c.EnableAnnotations();
-            });            
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

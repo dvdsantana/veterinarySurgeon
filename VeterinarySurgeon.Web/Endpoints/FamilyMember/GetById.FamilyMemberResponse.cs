@@ -21,7 +21,6 @@ namespace VeterinarySurgeon.Web.Endpoints.FamilyMember
 
         public ICollection<PetResponse> Pets { get; set; }
 
-
         // Mappers
         // Note: doesn't expose behavior
         public static FamilyMemberResponse FromFamilyMember(FamilyMemberDTO item) =>

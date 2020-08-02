@@ -11,10 +11,10 @@ namespace VeterinarySurgeon.Application.Specifications
                 .Paginate(skip, take)
                 .Include(e => e.Pets)
                     .ThenInclude(p => p.Animal);
-            
+
             Query.Include(e => e.FamilyMembers)
                 .ThenInclude(f => f.Pets)
                     .ThenInclude(p => p.Animal);
-        } 
+        }
     }
 }

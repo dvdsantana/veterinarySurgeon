@@ -2,7 +2,7 @@
 
 namespace VeterinarySurgeon.Core.Entities
 {
-    public class Animal: BaseEntity
+    public class Animal : BaseEntity
     {
         public string Name { get; private set; }
 
@@ -10,9 +10,9 @@ namespace VeterinarySurgeon.Core.Entities
 
         private Animal()
         {
-
         }
-        public Animal(string name):this()
+
+        public Animal(string name) : this()
         {
             Name = name;
         }
