@@ -18,7 +18,7 @@
             <td>{{pet.name}}</td>
             <td>{{pet.animal.name}}</td>
             <td>{{pet.owner.fullName}}</td>
-            <td>{{pet.owner.isEmployee}}</td>
+            <td>{{pet.owner.isEmployee | yesNo }}</td>
             <td><button (click)="deletePet(pet.id)" class="btn btn-danger">Delete</button></td>
           </tr>
         </tbody>

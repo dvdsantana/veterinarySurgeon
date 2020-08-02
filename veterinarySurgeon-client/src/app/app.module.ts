@@ -10,6 +10,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { PetListComponent } from './pet-list/pet-list.component';
+import { YesNoPipe } from './yes-no.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PetListComponent } from './pet-list/pet-list.component';
     EmployeeListComponent,
     EmployeeDetailsComponent,
     UpdateEmployeeComponent,
-    PetListComponent
+    PetListComponent,
+    YesNoPipe
   ],
   imports: [
     BrowserModule,
