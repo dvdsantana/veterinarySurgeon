@@ -8,4 +8,5 @@ export class Employee {
     petsCount: number;
     isEmployee:boolean;
     pets: Pet[];
+    familyMembers: Employee[];
 }
